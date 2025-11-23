@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите слово"/>
+
+    <EditText
+        android:id="@+id/editTextTranslation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите перевод"/>
+
+    <EditText
+        android:id="@+id/editTextExample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите пример использования"/>
+
+    <EditText
+        android:id="@+id/editTextTags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите теги через запятую"/>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"/>
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Удалить"
+        android:visibility="gone"/>
+</LinearLayout>
