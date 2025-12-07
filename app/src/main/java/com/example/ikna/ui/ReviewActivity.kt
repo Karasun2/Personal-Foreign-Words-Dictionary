@@ -78,7 +78,13 @@ class ReviewActivity : BaseActivity() {
 
         cardViewModel.updateCard(updatedCard)
 
+        if (quality == 0) {
+            cardsToReview.add(updatedCard)
+        }
+
         currentIndex++
         showCard()
     }
+
+
 }
