@@ -8,18 +8,32 @@ object ReviewCalculator {
         var interval = card.interval
         var easeFactor = card.easeFactor
 
-        easeFactor = easeFactor + (0.1f - (3 - quality) * 0.08f)
+        easeFactor += (0.1f - (3 - quality) * 0.08f)
         if (easeFactor < 1.3f) easeFactor = 1.3f
 
-        interval = when (quality) {
-            0 -> 1L
-            1 -> (interval * 1.2f).toLong()
-            2 -> (interval * easeFactor).toLong()
-            3 -> (interval * easeFactor * 1.3f).toLong()
-            else -> interval
-        }
+        val nextReviewDate = when (quality) {
+            0 -> {
+                interval = 0L
+                System.currentTimeMillis()
+            }
 
-        val nextReviewDate = System.currentTimeMillis() + interval * 24 * 60 * 60 * 1000L
+            1 -> {
+                interval = (interval * 1.2f).toLong()
+                System.currentTimeMillis() + interval * DAY_MS
+            }
+
+            2 -> {
+                interval = (interval * easeFactor).toLong()
+                System.currentTimeMillis() + interval * DAY_MS
+            }
+
+            3 -> {
+                interval = (interval * easeFactor * 1.3f).toLong()
+                System.currentTimeMillis() + interval * DAY_MS
+            }
+
+            else -> System.currentTimeMillis()
+        }
 
         return card.copy(
             interval = interval,
@@ -27,4 +41,6 @@ object ReviewCalculator {
             nextReviewDate = nextReviewDate
         )
     }
+
+    private const val DAY_MS = 24 * 60 * 60 * 1000L
 }
